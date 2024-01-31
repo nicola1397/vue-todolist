@@ -31,6 +31,10 @@ const app = createApp({
     taskDelete(i) {
       this.tasks.splice(i, 1);
     },
+
+    taskStatus(task) {
+      task.done = !task.done;
+    },
   },
 });
 

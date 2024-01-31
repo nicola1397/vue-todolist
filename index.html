@@ -40,6 +40,7 @@
         name="newTask"
         id="newTask"
         v-model.trim="newTask.text"
+        @keyup.enter="createTask()"
       />
       <button class="btn btn-primary" @click="createTask()">
         Aggiungi task
@@ -56,7 +57,7 @@
                 v-show="!task.done"
                 class="task mb-3"
               >
-                <div>{{ task.text }}</div>
+                <div @click="taskStatus(task)">{{ task.text }}</div>
                 <div class="actions">
                   <i
                     class="bi bi-check text-success"
@@ -79,7 +80,9 @@
                 v-show="task.done"
                 class="task mb-3"
               >
-                <div>{{ task.text }}</div>
+                <div @click="taskStatus(task)" class="done">
+                  {{ task.text }}
+                </div>
                 <div class="actions">
                   <i
                     class="bi bi-arrow-clockwise text-warning"
